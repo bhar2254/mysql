@@ -1,6 +1,6 @@
 {
   "name": "@bhar2254/mysql",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "A package for simplifying sql queries and validation for any js application.",
   "main": "src/mysql.js",
   "scripts": {
@@ -13,5 +13,9 @@
     "extensions"
   ],
   "author": "Blaine Harper",
-  "license": "GPL-3.0"
+  "license": "GPL-3.0",
+  "dependencies": {
+    "axios": "^1.7.8",
+    "mysql2": "^3.11.5"
+  }
 }
