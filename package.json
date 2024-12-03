@@ -1,5 +1,5 @@
 {
-  "name": "mysql",
+  "name": "@bhar2254/mysql",
   "version": "1.0.0",
   "description": "A package for simplifying sql queries and validation for any js application.",
   "main": "src/mysql.js",

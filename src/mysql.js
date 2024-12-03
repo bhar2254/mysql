@@ -24,8 +24,8 @@ const NODE_ENV = process.env.NODE_ENV || 'development'
 require('dotenv').config({path: `.env.${NODE_ENV}`})
 
 const sqlHelper = require('./mysql-helper');
-const { SQLObject } = require('./mysql-object');
 const sqlExtensions = require('./mysql-extensions');
+const { SQLObject } = require('./mysql-object');
 
 // 	Export functions for later use
 module.exports = {
