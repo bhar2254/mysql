@@ -1,0 +1,17 @@
+{
+  "name": "mysql",
+  "version": "1.0.0",
+  "description": "A package for simplifying sql queries and validation for any js application.",
+  "main": "src/mysql.js",
+  "scripts": {
+    "test": "node ./app"
+  },
+  "keywords": [
+    "mysql",
+    "js",
+    "node",
+    "extensions"
+  ],
+  "author": "Blaine Harper",
+  "license": "GPL-3.0"
+}
