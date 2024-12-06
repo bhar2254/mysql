@@ -291,19 +291,18 @@ const buildBulkInsertQuery = async (table, rows) => {
 };
 
 // Helper to construct an UPDATE query
-function buildUpdateQuery(table, data, properties, id, key, all) {
-    const setValues = Object.keys(data)
+function buildUpdateQuery(table, datum, properties, id, key, all) {
+    const setValues = Object.keys(datum)
         .filter(
             (key) =>
                 !key.startsWith('_') &&
-                data[key] !== undefined &&
-                data[key] !== null &&
-                data[key] !== 'undefined' &&
-                data[key] !== 'null' &&
-                (this.datum && data[key] !== this.datum[key]) &&
+                datum[key] !== undefined &&
+                datum[key] !== null &&
+                datum[key] !== 'undefined' &&
+                datum[key] !== 'null' &&
                 Object.keys(properties).includes(key)
         )
-        .map((key) => `\`${key}\` = "${escapeValue(data[key])}"`);
+        .map((key) => `\`${key}\` = "${escapeValue(datum[key])}"`);
 
     if (setValues.length === 0) return null;
 

@@ -221,7 +221,7 @@ class SQLObject {
         const query = buildUpdateQuery(this.table, datum, this.properties, this.id, this.key, this.all);
 
         if (!query) {
-            console.log('SQLObject.update(): no values set');
+            console.log(`SQLObject.update(): no values set ${JSON.stringify(datum)}`);
             return 0;
         }
 
