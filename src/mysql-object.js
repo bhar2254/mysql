@@ -169,7 +169,7 @@ class SQLObject {
             this.key = 'id';
             this.id = response.insertId;
             this.last = { query, response };
-            console.log(`SQLObject.create() success: ${JSON.stringify(response)} ${query}`);
+            // console.log(`SQLObject.create() success: ${JSON.stringify(response)} ${query}`);
             await this.read()
             return response;
         } catch (error) {
@@ -196,7 +196,7 @@ class SQLObject {
         this.data = data;
         this.datum = data[0]
         this.last = { query, response: data };
-        console.log(`SQLObject.read(): ${query}`);
+        // console.log(`SQLObject.read(): ${query}`);
         this._read = true;
         return data;
     }
@@ -229,7 +229,7 @@ class SQLObject {
             const response = await queryPromise(query);
             this._last = { query, response };
             this.data = [update];
-            console.log(`SQLObject.update(): ${query}`);
+            // console.log(`SQLObject.update(): ${query}`);
             return response;
         } catch (error) {
             console.log(`SQLObject.update() failure: ${query}`);
@@ -246,7 +246,7 @@ class SQLObject {
         try {
             const response = await queryPromise(query);
             this._last = { query, response };
-            console.log('SQLObject.destroy(): object deleted');
+            // console.log('SQLObject.destroy(): object deleted');
             return 1;
         } catch (error) {
             console.log(`SQLObject.destroy() failure: ${query}`);
