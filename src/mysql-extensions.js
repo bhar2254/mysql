@@ -39,7 +39,7 @@ const getObjectFromTable = async (table, columns = ['guid', 'id']) => {
     const _table = new SQLObject({ table, all: true })
     const data = await _table.read()
     let response = {}
-    if(columns.length === 2)
+    if(columns.length === 2 && data)
         data.map(x => {if(x[columns[0]]) response[x[columns[0]] || x[0]] = JSON.parse(x[columns[1]] || x[1])})
     return response
 };
