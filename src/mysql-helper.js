@@ -330,14 +330,14 @@ const buildBulkUpdateQuery = async (table, key, id, updates) => {
 
 // Helper to construct a SELECT query with time conversion if necessary
 function buildSelectQuery(table, properties, id, key, all, args) {
-    const { limit, offset, orderBy, groupBy } = args;
+    const { limit, offset, orderBy, groupBy, where } = args;
     const timeConversion = Object.keys(properties)
         .filter((key) => properties[key] === 'date' || properties[key] === 'datetime')
         .map((key) => `, DATE_FORMAT(${key}, '${properties[key] === 'date' ? date_format : datetime_format}') AS ${key}`)
         .join('');
 
-    const where = all ? '' : ` WHERE ${key} = "${id}"`;
-    return `SELECT *${timeConversion} FROM ${table}${where}${orderBy ? ` ORDER BY ${orderBy}` : ''}${groupBy ? ` GROUP BY ${groupBy}` : ''}${offset ? ` OFFSET ${offset}` : ''}${limit ? ` LIMIT ${limit}` : ''};`;
+    const whereStmt = where ? Object.keys(where).map(x => `${x} ${where[x]}`).join(' AND ') : all ? '' : ` WHERE ${key} = "${id}"`;
+    return `SELECT *${timeConversion} FROM ${table}${whereStmt}${orderBy ? ` ORDER BY ${orderBy}` : ''}${groupBy ? ` GROUP BY ${groupBy}` : ''}${offset ? ` OFFSET ${offset}` : ''}${limit ? ` LIMIT ${limit}` : ''};`;
 }
 
 // Helper to construct a DELETE query

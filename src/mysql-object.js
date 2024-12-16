@@ -146,7 +146,7 @@ class SQLObject {
         const { datum, properties, table } = this;
         const _args = { ...args };
         const create = {};
-        const { safe = true } = args
+        const { safe = true } = _args
 
         // Filter valid properties
         for (const key of Object.keys(properties)) {
